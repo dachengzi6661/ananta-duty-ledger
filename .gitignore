@@ -1,0 +1,5 @@
+# 工作与自检产物，不入仓库
+tmp_*
+.workbuddy/
+.impeccable/
+PRODUCT.md

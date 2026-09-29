@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>异环勤务录 · 零氪不抽卡参考刊</title>
+  <meta name="description" content="异环零氪勤务刊物：每月、每周、每日必做事项的打卡目录，打勾记录完成情况，数据仅存本机。">
+  <meta name="theme-color" content="#EFE8D3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='6'%20fill='%23BC2F23'/%3E%3Cpath%20d='M18%2034%20L28%2044%20L46%2022'%20stroke='%23F7F6F1'%20stroke-width='7'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <a class="skip" href="#toc">跳到今日目录</a>
+
+  <header class="masthead">
+    <div class="mast-band">
+      <div class="mast-info">
+        <p class="issue-no">第 <span id="issueNo">…</span> 期</p>
+        <p class="issue-date" id="issueDate">…</p>
+        <p class="issue-latin">Ananta&nbsp;Duty&nbsp;Ledger</p>
+        <p class="issue-meta">创刊于二〇二六年 · 数据不出本机 · 内部勤务参考</p>
+      </div>
+      <div class="mast-title-block">
+        <h1 class="mast-title">异环勤务录</h1>
+        <p class="mast-kai" aria-hidden="true">零氪不抽卡参考刊</p>
+        <span class="mast-seal" aria-hidden="true">勤</span>
+      </div>
+    </div>
+    <div class="mast-rule" aria-hidden="true"></div>
+    <p class="storage-warn" id="storageWarn" role="alert" hidden>※ 本机存储不可用，本次进度将不会保存</p>
+  </header>
+
+  <main class="board" id="main">
+    <div class="board-top">
+    <section class="toc" aria-labelledby="tocTitle">
+      <div class="toc-head">
+        <h2 class="toc-title" id="tocTitle">今日目录</h2>
+        <p class="toc-note">每日四件 · 逐项勾销</p>
+      </div>
+      <noscript>
+        <p class="noscript-note">本刊需要启用 JavaScript 才能记录打卡进度。</p>
+      </noscript>
+      <ol class="entries" id="dailyList"></ol>
+    </section>
+
+    <aside class="rail" aria-label="今日刊况">
+      <div class="rail-label-row">
+        <p class="rail-label">刊况</p>
+        <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true">
+          <span class="sound-chip" aria-hidden="true">音</span>
+          <span class="visually-hidden">打勾音效开关</span>
+        </button>
+      </div>
+      <div class="rail-progress">
+        <p class="progress-figure">
+          <span class="progress-num" id="doneCount">0</span><span class="progress-total">/ 4</span>
+        </p>
+        <p class="seal" id="daySeal" hidden aria-label="今日四件全部完成">全勤</p>
+      </div>
+      <dl class="rail-stats">
+        <div class="stat-row">
+          <dt>全勤连击</dt>
+          <dd><span id="streakNum">0</span> 天</dd>
+        </div>
+        <div class="stat-row">
+          <dt>今日刊毕还有</dt>
+          <dd id="countdown">约六小时</dd>
+        </div>
+        <div class="stat-row">
+          <dt>周刊进度</dt>
+          <dd id="weekProgress">0 / 5</dd>
+        </div>
+        <div class="stat-row">
+          <dt>月刊进度</dt>
+          <dd id="monthProgress">0 / 3</dd>
+        </div>
+        <div class="stat-row">
+          <dt>开刊至今</dt>
+          <dd><span id="sinceNum">1</span> 天</dd>
+        </div>
+      </dl>
+      <p class="visually-hidden" id="liveStatus" role="status"></p>
+    </aside>
+    </div>
+
+    <div class="board-divider" aria-hidden="true"></div>
+
+    <div class="board-lower">
+      <section class="sub" aria-labelledby="weeklyTitle">
+        <div class="toc-head">
+          <h2 class="toc-title toc-title--sub" id="weeklyTitle">周刊目录</h2>
+          <span class="seal seal--mini" id="weekSeal" hidden aria-hidden="true">周讫</span>
+          <p class="toc-note">每周五件 · 周一换新 · <span class="note-count" id="weekNote">已勾 0/5</span></p>
+        </div>
+        <ol class="entries" id="weeklyList"></ol>
+      </section>
+
+      <section class="sub lower-month" aria-labelledby="monthlyTitle">
+        <div class="toc-head">
+          <h2 class="toc-title toc-title--sub" id="monthlyTitle">月刊目录</h2>
+          <span class="seal seal--mini" id="monthSeal" hidden aria-hidden="true">月讫</span>
+          <p class="toc-note">每月三件 · 月初换新 · <span class="note-count" id="monthNote">已勾 0/3</span></p>
+        </div>
+        <ol class="entries" id="monthlyList"></ol>
+      </section>
+    </div>
+
+    <div class="notes">
+      <p class="notes-label">凡例</p>
+      <ol class="notes-list">
+        <li>一、本刊分日刊、周刊、月刊三辑，分别于每日零点、每周一、每月一日换新，旧刊进度各自封存。</li>
+        <li>二、点选条目即勾销划线，再点即撤销；进度自动存于本机浏览器，不出本机、不涉云端。</li>
+        <li>三、今日四件勾满，刊况栏加盖朱红「全勤」章；全勤连击按日刊全勾逐日累计。</li>
+        <li>四、清单整理自 B 站《异环每月、每周及每日的必做事项》，版本更迭后请以游戏内实际为准。</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer class="colophon">
+    <p>清单整理自<a href="https://www.bilibili.com/video/BV1idTu63Ecv/" target="_blank" rel="noopener">《异环每月、每周及每日的必做事项》</a>，打卡进度自动保存在本机浏览器中。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
