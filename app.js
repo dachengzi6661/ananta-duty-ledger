@@ -7,11 +7,11 @@
 (function () {
   var STORAGE_KEY = 'ananta-ledger-v1';
   var DAILY_TOTAL = 4;
-  var WEEKLY_TOTAL = 5;
+  var WEEKLY_TOTAL = 4;
   var MONTHLY_TOTAL = 3;
   var KNOWN_IDS = {
     day: { d1: 1, d2: 1, d3: 1, d4: 1 },
-    week: { w1: 1, w2: 1, w3: 1, w4: 1, w5: 1 },
+    week: { w1: 1, w2: 1, w3: 1, w6: 1 },
     month: { m1: 1, m2: 1, m3: 1 }
   };
 
@@ -26,8 +26,8 @@
     { id: 'w1', no: '01', title: '玛门挑战', meta: '维纳公寓 · 存金最高一次结算方斯，顺路逛拍卖行凯觎钱市' },
     { id: 'w2', no: '02', title: '棉棉领礼', meta: '异象家具找棉棉 · 按产出效率领 400 好感度送礼道具' },
     { id: 'w3', no: '03', title: '异象巡礼', meta: '探索指南周本 ×3 · 角色技能材料，进阶后再打收益更高' },
-    { id: 'w4', no: '04', title: '同城派送', meta: '都市闲趣 · 每点活力约 1000 方斯，邮箱订单不耗活力' },
-    { id: 'w5', no: '05', title: '粉爪银行', meta: '新赫兰德区右上 · 每期上限 100 万方斯，积分周任务别漏' }
+    /* id 用 w6：避开旧版 w4（同城派送）/ w5（粉爪银行）在本地存档里的勾选残留 */
+    { id: 'w6', no: '04', title: '排球锦标赛', meta: '奥利哈刚理想馆 · 每期 100 万方斯' }
   ];
 
   var MONTHLY_ITEMS = [
@@ -327,7 +327,7 @@
         msgs.push('今日已勾 ' + done + ' / ' + DAILY_TOTAL);
       }
       if (prevCounts) {
-        if (weekDone === WEEKLY_TOTAL && prevCounts.week !== weekDone) msgs.push('周刊五件全部完成');
+        if (weekDone === WEEKLY_TOTAL && prevCounts.week !== weekDone) msgs.push('周刊四件全部完成');
         if (monthDone === MONTHLY_TOTAL && prevCounts.month !== monthDone) msgs.push('月刊三件全部完成');
       }
       var live = $('#liveStatus');
